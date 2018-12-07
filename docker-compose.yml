@@ -1,0 +1,57 @@
+version: "3"
+
+services:
+  node1:
+    container_name: node1
+    build: .
+    ports:
+     - "5001:5000"
+    volumes:
+     - .:/code
+    depends_on:
+     - redis
+
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+     - "6379:6379"
+    depends_on:
+     - init
+
+  node2:
+    container_name: node2
+    build: .
+    ports:
+     - "5002:5000"
+    volumes:
+     - .:/code
+    depends_on:
+     - init
+
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+     - "6379:6379"
+    depends_on:
+     - consul
+
+  init:
+    container_name: init
+    image: cfmanteiga/alpine-bash-curl-jq
+    volumes:
+     - .:/code
+    command: >
+     /code/redis-reg.sh
+    depends_on:
+     - redis
+
+  consul:
+    container_name: consul
+    image: consul:latest
+    ports:
+      - "8400:8400"
+      - "8500:8500"
+      - "53:8600/udp"
+    command: agent -server -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect=1

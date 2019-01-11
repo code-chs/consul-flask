@@ -2,6 +2,7 @@
 
 
 **This is a proof of concept, working prototye:** single consul server, no tls, minimum failsafe, two app nodes
+
 the purpose of this example to demonstrate workarond for docker-compose's static variables (service "init")
 
 

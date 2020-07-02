@@ -1,4 +1,5 @@
 # consul and flask with docker-compose
+.
 
 
 **This is a proof of concept, working prototye:** single consul server, no tls, minimum failsafe, two app nodes

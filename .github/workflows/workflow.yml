@@ -2,7 +2,7 @@ name: main-wf
 
 env: 
   zaychik: ${{ secrets.zaychik }}
-  ZAYCHIK: ${{ secrets.ZAYCHIK }}
+  ZAYCHIK1: ${{ secrets.ZAYCHIK }}
 
 on: push
 
@@ -24,4 +24,4 @@ jobs:
         run: docker-compose --version
 
       - name: using scret
-        run: echo "zaychik" ; echo "$ZAYCHIK"
+        run: echo "zaychik" ; echo "$ZAYCHIK1"

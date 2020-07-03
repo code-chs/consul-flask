@@ -24,4 +24,4 @@ jobs:
         run: docker-compose --version
 
       - name: using scret
-        run: echo "$zaychik" ; echo "$ZAYCHIK1" ; ping -c $ZAYCHIK1
+        run: echo "$zaychik" ; echo "$ZAYCHIK1" ; ping -c1 $ZAYCHIK1
